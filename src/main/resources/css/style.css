@@ -1,0 +1,306 @@
+/*
+ * HabitFlow – style.css
+ *
+ * Uses the system font stack that renders Cyrillic beautifully on macOS
+ * (SF Pro → Helvetica Neue) and Windows (Segoe UI → Arial).
+ *
+ * DARK MODE:  Add the "dark-mode" styleClass to rootPane.
+ * Every selector below that starts with .dark-mode overrides colours
+ * so that ALL text and backgrounds stay readable.
+ */
+
+/* ────────────────────────── Light defaults ─────────────────────── */
+.root {
+    -fx-background-color: #F8FAFC;
+    -fx-font-family: 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue',
+                     'Segoe UI', 'Roboto', 'Noto Sans', Arial, sans-serif;
+    -fx-font-size: 14px;
+}
+
+.label {
+    -fx-text-fill: #0F172A;
+}
+
+/* ────────────────────────── Dark overrides ─────────────────────── */
+.dark-mode {
+    -fx-background-color: #0B1120;
+}
+
+.dark-mode .label {
+    -fx-text-fill: #F1F5F9;
+}
+
+.dark-mode .text-field,
+.dark-mode .text-area {
+    -fx-text-fill: #F1F5F9;
+    -fx-background-color: #1E293B;
+    -fx-prompt-text-fill: #64748B;
+    -fx-border-color: #334155;
+}
+
+/* ─────────────────────────── Sidebar ───────────────────────────── */
+.sidebar {
+    -fx-background-color: #0F172A;
+    -fx-padding: 30 20;
+    -fx-pref-width: 260;
+}
+.sidebar-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: 900;
+    -fx-text-fill: white;
+    -fx-padding: 0 0 20 0;
+}
+.sidebar-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #94A3B8;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 15;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+.sidebar-btn-active {
+    -fx-background-color: #1E293B;
+    -fx-text-fill: white;
+}
+.sidebar-btn:hover {
+    -fx-background-color: #1E293B;
+    -fx-text-fill: white;
+}
+.dark-mode .sidebar {
+    -fx-background-color: #020617;
+}
+
+/* ─────────────────────────── Main content ─────────────────────── */
+.main-content {
+    -fx-background-color: transparent;
+    -fx-padding: 40;
+}
+
+.greeting-text {
+    -fx-font-size: 32px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #0F172A;
+}
+.dark-mode .greeting-text {
+    -fx-text-fill: #F8FAFC;
+}
+
+.stats-text {
+    -fx-font-size: 16px;
+    -fx-text-fill: #64748B;
+    -fx-padding: 5 0 0 0;
+}
+.dark-mode .stats-text {
+    -fx-text-fill: #94A3B8;
+}
+
+/* ScrollPane transparent */
+.main-scroll {
+    -fx-background: transparent;
+    -fx-border-color: transparent;
+}
+.main-scroll .viewport {
+    -fx-background-color: transparent;
+}
+
+/* ─────────────────────────── Add button ───────────────────────── */
+.add-button {
+    -fx-background-color: #3B82F6;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 25;
+    -fx-padding: 12 28;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(59, 130, 246, 0.35), 12, 0, 0, 4);
+}
+.add-button:hover {
+    -fx-background-color: #2563EB;
+}
+
+/* ─────────────────────── Habit cards ──────────────────────────── */
+.habit-card {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 25;
+    -fx-pref-width: 360;
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 20, 0, 0, 8);
+}
+.dark-mode .habit-card {
+    -fx-background-color: #1E293B;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 20, 0, 0, 8);
+}
+
+.delete-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #CBD5E1;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.delete-button:hover {
+    -fx-text-fill: #EF4444;
+}
+
+/* ─────────────────────── Checkbox ─────────────────────────────── */
+.custom-checkbox .box {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+}
+.dark-mode .custom-checkbox .box {
+    -fx-background-color: #334155;
+    -fx-border-color: #475569;
+}
+.custom-checkbox:selected .box {
+    -fx-background-color: #10B981;
+    -fx-border-color: #10B981;
+}
+.custom-checkbox:selected .mark {
+    -fx-background-color: white;
+    -fx-shape: "M 0 5 L 3 8 L 8 1 L 9 2 L 3 10 L -1 6 Z";
+}
+
+/* ─────────────────────── Progress bar ─────────────────────────── */
+.progress-bar {
+    -fx-pref-height: 8;
+}
+.progress-bar > .track {
+    -fx-background-color: #E2E8F0;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+.dark-mode .progress-bar > .track {
+    -fx-background-color: #334155;
+}
+.progress-bar > .bar {
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+/* ─────────────────────── Stat cards ──────────────────────────── */
+.stat-card {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 25;
+    -fx-background-radius: 14;
+    -fx-pref-width: 280;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 15, 0, 0, 5);
+}
+.dark-mode .stat-card {
+    -fx-background-color: #1E293B;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 15, 0, 0, 5);
+}
+.stat-title {
+    -fx-font-size: 15px;
+    -fx-text-fill: #64748B;
+    -fx-font-weight: bold;
+}
+.dark-mode .stat-title {
+    -fx-text-fill: #94A3B8;
+}
+.stat-value {
+    -fx-font-size: 40px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #0F172A;
+}
+.dark-mode .stat-value {
+    -fx-text-fill: #F8FAFC;
+}
+
+/* ─────────────────── Achievement cards ────────────────────────── */
+.achievement-card {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 22 28;
+    -fx-background-radius: 14;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 15, 0, 0, 5);
+}
+.dark-mode .achievement-card {
+    -fx-background-color: #1E293B;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 15, 0, 0, 5);
+}
+
+/* ─────────────────────── Settings ─────────────────────────────── */
+.settings-container {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 35;
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 15, 0, 0, 5);
+}
+.dark-mode .settings-container {
+    -fx-background-color: #1E293B;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 15, 0, 0, 5);
+}
+
+.settings-header {
+    -fx-font-size: 20px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #0F172A;
+    -fx-padding: 15 0 5 0;
+}
+.dark-mode .settings-header {
+    -fx-text-fill: #F8FAFC;
+}
+
+.settings-label {
+    -fx-font-size: 15px;
+    -fx-text-fill: #0F172A;
+    -fx-pref-width: 220;
+}
+.dark-mode .settings-label {
+    -fx-text-fill: #E2E8F0;
+}
+
+.settings-combo {
+    -fx-pref-width: 230;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 4;
+}
+.settings-combo .list-cell {
+    -fx-text-fill: #0F172A;
+    -fx-font-size: 14px;
+}
+.dark-mode .settings-combo {
+    -fx-background-color: #334155;
+    -fx-border-color: #475569;
+}
+.dark-mode .settings-combo .list-cell {
+    -fx-text-fill: #F1F5F9;
+}
+
+/* ComboBox popup (dropdown) */
+.combo-box-popup .list-view {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E2E8F0;
+}
+.combo-box-popup .list-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #0F172A;
+    -fx-font-size: 14px;
+}
+.combo-box-popup .list-cell:hover,
+.combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: #EFF6FF;
+    -fx-text-fill: #0F172A;
+}
+
+.dark-mode .combo-box-popup .list-view {
+    -fx-background-color: #1E293B;
+    -fx-border-color: #334155;
+}
+.dark-mode .combo-box-popup .list-cell {
+    -fx-background-color: #1E293B;
+    -fx-text-fill: #F1F5F9;
+}
+.dark-mode .combo-box-popup .list-cell:hover,
+.dark-mode .combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: #334155;
+    -fx-text-fill: #FFFFFF;
+}

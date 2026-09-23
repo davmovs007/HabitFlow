@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.habittracker.controller.MainController" stylesheets="@../css/style.css" prefWidth="1100" prefHeight="750">
+    <left>
+        <VBox styleClass="sidebar" spacing="15">
+            <Label text="HabitFlow" styleClass="sidebar-title"/>
+            <Button fx:id="btnDash" text="🏠 Дашборд" maxWidth="Infinity" styleClass="sidebar-btn" onAction="#showDashboard"/>
+            <Button fx:id="btnStat" text="📊 Аналитика" maxWidth="Infinity" styleClass="sidebar-btn" onAction="#showAnalytics"/>
+            <Button fx:id="btnAchieve" text="🏆 Достижения" maxWidth="Infinity" styleClass="sidebar-btn" onAction="#showAchievements"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button fx:id="btnSet" text="⚙ Настройки" maxWidth="Infinity" styleClass="sidebar-btn" onAction="#showSettings"/>
+        </VBox>
+    </left>
+    <center>
+        <StackPane fx:id="contentArea" styleClass="main-content">
+            <!-- Dashboard -->
+            <VBox fx:id="viewDashboard" spacing="30">
+                <HBox alignment="CENTER_LEFT">
+                    <VBox>
+                        <Label fx:id="lblDashTitle" text="Дашборд" styleClass="greeting-text"/>
+                        <Label fx:id="statsLabel" text="Сегодня выполнено: 0 из 0" styleClass="stats-text"/>
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Button fx:id="btnAddHabit" text="+ Новая привычка" styleClass="add-button" onAction="#handleAddHabit"/>
+                </HBox>
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="main-scroll">
+                    <FlowPane fx:id="habitsContainer" hgap="25" vgap="25"/>
+                </ScrollPane>
+            </VBox>
+            
+            <!-- Analytics -->
+            <VBox fx:id="viewAnalytics" spacing="30" visible="false">
+                <Label fx:id="lblStatTitle" text="Аналитика" styleClass="greeting-text"/>
+                <GridPane hgap="25" vgap="25">
+                    <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="stat-card">
+                        <Label fx:id="lblTotalHabits" text="Всего привычек" styleClass="stat-title"/>
+                        <Label fx:id="statTotalHabits" text="0" styleClass="stat-value"/>
+                    </VBox>
+                    <VBox GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="stat-card">
+                        <Label fx:id="lblTotalCompletions" text="Всего выполнений" styleClass="stat-title"/>
+                        <Label fx:id="statTotalCompletions" text="0" styleClass="stat-value"/>
+                    </VBox>
+                    <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="stat-card">
+                        <Label fx:id="lblBestStreak" text="Лучшая серия (дней)" styleClass="stat-title"/>
+                        <Label fx:id="statBestStreak" text="0" styleClass="stat-value"/>
+                    </VBox>
+                </GridPane>
+            </VBox>
+            
+            <!-- Achievements -->
+            <VBox fx:id="viewAchievements" spacing="30" visible="false">
+                <Label fx:id="lblAchieveTitle" text="Достижения" styleClass="greeting-text"/>
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="main-scroll">
+                    <VBox fx:id="achievementsContainer" spacing="20" style="-fx-padding: 0 20 0 0;"/>
+                </ScrollPane>
+            </VBox>
+            
+            <!-- Settings -->
+            <VBox fx:id="viewSettings" spacing="30" visible="false">
+                <Label fx:id="lblSetTitle" text="Настройки" styleClass="greeting-text"/>
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="main-scroll">
+                    <VBox spacing="25" styleClass="settings-container">
+                        <Label fx:id="lblSetGroup1" text="Оформление" styleClass="settings-header"/>
+                        <HBox spacing="20" alignment="CENTER_LEFT">
+                            <Label fx:id="lblSetTheme" text="Тема приложения:" styleClass="settings-label"/>
+                            <ComboBox fx:id="themeCombo" styleClass="settings-combo"/>
+                        </HBox>
+                        
+                        <Label fx:id="lblSetGroup2" text="Региональные данные" styleClass="settings-header"/>
+                        <HBox spacing="20" alignment="CENTER_LEFT">
+                            <Label fx:id="lblSetLang" text="Язык интерфейса:" styleClass="settings-label"/>
+                            <ComboBox fx:id="langCombo" styleClass="settings-combo"/>
+                        </HBox>
+                        <HBox spacing="20" alignment="CENTER_LEFT">
+                            <Label fx:id="lblSetTz" text="Часовой пояс:" styleClass="settings-label"/>
+                            <ComboBox fx:id="tzCombo" styleClass="settings-combo"/>
+                        </HBox>
+                        <HBox spacing="20" alignment="CENTER_LEFT">
+                            <Label fx:id="lblSetWeek" text="Первый день недели:" styleClass="settings-label"/>
+                            <ComboBox fx:id="weekCombo" styleClass="settings-combo"/>
+                        </HBox>
+                        
+                        <Label fx:id="lblSetGroup3" text="Форматы" styleClass="settings-header"/>
+                        <HBox spacing="20" alignment="CENTER_LEFT">
+                            <Label fx:id="lblSetDate" text="Формат даты:" styleClass="settings-label"/>
+                            <ComboBox fx:id="dateCombo" styleClass="settings-combo"/>
+                        </HBox>
+                        <HBox spacing="20" alignment="CENTER_LEFT">
+                            <Label fx:id="lblSetTime" text="Формат времени:" styleClass="settings-label"/>
+                            <ComboBox fx:id="timeCombo" styleClass="settings-combo"/>
+                        </HBox>
+                        
+                        <Label fx:id="lblSetGroup4" text="Навигация" styleClass="settings-header"/>
+                        <HBox spacing="20" alignment="CENTER_LEFT">
+                            <Label fx:id="lblSetStart" text="Стартовый экран:" styleClass="settings-label"/>
+                            <ComboBox fx:id="startCombo" styleClass="settings-combo"/>
+                        </HBox>
+                    </VBox>
+                </ScrollPane>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>
