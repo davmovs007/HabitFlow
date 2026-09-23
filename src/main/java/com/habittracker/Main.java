@@ -1,19 +1,17 @@
 package com.habittracker;
-import com.habittracker.dao.DatabaseManager;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-public class Main extends Application {
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        DatabaseManager.initDatabase();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
-        Scene scene = new Scene(loader.load(), 900, 650);
-        primaryStage.setTitle("Habit Tracker Desktop");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+import javafx.application.Application;
+
+/**
+ * Application entry point. Keep this class independent of {@link Application}
+ * so it can be run directly by the IDE with the JavaFX Maven dependencies on
+ * the classpath.
+ */
+public final class Main {
+    private Main() {
     }
-    public static void main(String[] args) { launch(args); }
+
+    public static void main(String[] args) {
+        Application.launch(HabitTrackerApplication.class, args);
+    }
 }
