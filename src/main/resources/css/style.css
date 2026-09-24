@@ -1,8 +1,10 @@
 /*
  * HabitFlow – style.css
  *
- * Uses the system font stack that renders Cyrillic beautifully on macOS
- * (SF Pro → Helvetica Neue) and Windows (Segoe UI → Arial).
+ * Arial is explicitly used because it contains a full Cyrillic character set
+ * on both macOS and Windows. JavaFX does not handle a browser-style font
+ * fallback list reliably, which could otherwise make Russian text fall back
+ * to a mismatched font.
  *
  * DARK MODE:  Add the "dark-mode" styleClass to rootPane.
  * Every selector below that starts with .dark-mode overrides colours
@@ -10,10 +12,10 @@
  */
 
 /* ────────────────────────── Light defaults ─────────────────────── */
-.root {
+.root,
+.dialog-pane {
     -fx-background-color: #F8FAFC;
-    -fx-font-family: 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue',
-                     'Segoe UI', 'Roboto', 'Noto Sans', Arial, sans-serif;
+    -fx-font-family: "Arial";
     -fx-font-size: 14px;
 }
 
